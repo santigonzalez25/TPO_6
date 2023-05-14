@@ -180,10 +180,10 @@ public class ViewAgregarCliente extends javax.swing.JInternalFrame {
         String tel=jtTelefono.getText();
         Cliente miCliente=new Cliente(dni,nombre,apellido,ciudad,direccion);
         ArrayList<Cliente> c=new ArrayList();
-        c.add(miCliente);
+        
         boolean resul=Menu.miDirectorio.agregarCliente(tel, miCliente);
         if(resul){
-            
+            c.add(miCliente);
             JOptionPane.showMessageDialog(this,"Cliente agregado");
             limpiar();
         }else {
