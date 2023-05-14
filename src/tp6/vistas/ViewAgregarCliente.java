@@ -5,6 +5,7 @@
  */
 package tp6.vistas;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import tp6.negocio.Cliente;
 
@@ -178,10 +179,11 @@ public class ViewAgregarCliente extends javax.swing.JInternalFrame {
        
         String tel=jtTelefono.getText();
         Cliente miCliente=new Cliente(dni,nombre,apellido,ciudad,direccion);
+        ArrayList<Cliente> c=new ArrayList();
         
         boolean resul=Menu.miDirectorio.agregarCliente(tel, miCliente);
         if(resul){
-        
+            c.add(miCliente);
             JOptionPane.showMessageDialog(this,"Cliente agregado");
             limpiar();
         }else {
