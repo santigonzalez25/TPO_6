@@ -180,7 +180,6 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
         System.out.println(c);
         for(int i=0; i<c.size();i++){
             text+="Cliente: "+c.get(i).getApellido()+", "+c.get(i).getNombre()+"\n";
-                
             }
             System.out.println(text);
            jTextPane1.setText(text);
