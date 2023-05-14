@@ -39,7 +39,8 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
         jLabelMostrarCiudad = new javax.swing.JLabel();
-        jLabelLista = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jSeparator1 = new javax.swing.JSeparator();
 
         jLabel4.setText("jLabel4");
@@ -66,9 +67,11 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Ciudad:");
 
+        jScrollPane1.setViewportView(jTextPane1);
+
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabelMostrarCiudad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabelLista, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -76,13 +79,14 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabelMostrarCiudad)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addComponent(jLabel3)
+                .addGap(85, 85, 85)
+                .addComponent(jLabelMostrarCiudad)
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,9 +98,9 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelLista, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,15 +155,18 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
         String city=jTextFieldCiudad.getText();
         ArrayList<Cliente> c=Menu.miDirectorio.buscarClientes(city);
         jLabelMostrarCiudad.setText(city);
-        for(int i=0; i<c.size();i++){
-            if(c.iterator().hasNext()){
-                jLabelLista.setText("Cliente: "+c.get(i).getApellido()+", "+c.get(i).getNombre());
-            } else {
-                JOptionPane.showMessageDialog(this, "No hay ningun cliente en esa ciudad");
-            }
-            
-            
+        if(c.size()==0){
+              JOptionPane.showMessageDialog(this, "No hay ningun cliente en esa ciudad");
+              return;
         }
+        String text="";
+        System.out.println(c);
+        for(int i=0; i<c.size();i++){
+            text+="Cliente: "+c.get(i).getApellido()+", "+c.get(i).getNombre()+"\n";
+                
+            }
+            System.out.println(text);
+           jTextPane1.setText(text);
         
         
     }//GEN-LAST:event_jButtonBuscarActionPerformed
@@ -172,9 +179,10 @@ public class ViewBuscarClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelLista;
     private javax.swing.JLabel jLabelMostrarCiudad;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextFieldCiudad;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
