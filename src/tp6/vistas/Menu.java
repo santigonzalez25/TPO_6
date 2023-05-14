@@ -17,7 +17,9 @@ public static Directorio miDirectorio=new Directorio();
      * Creates new form Menu
      */
     public Menu() {
+        
         initComponents();
+        this.setSize(600, 500);
     }
 
     /**
@@ -52,6 +54,8 @@ public static Directorio miDirectorio=new Directorio();
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(40, 32));
+        setSize(new java.awt.Dimension(40, 32));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
